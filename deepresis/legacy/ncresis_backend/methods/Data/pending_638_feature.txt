@@ -1,0 +1,638 @@
+TraEA: Entropy density A on transcript
+TraEC: Entropy density C on transcript
+TraED: Entropy density D on transcript
+TraEE: Entropy density E on transcript
+TraEF: Entropy density F on transcript
+TraEG: Entropy density G on transcript
+TraEH: Entropy density H on transcript
+TraEI: Entropy density I on transcript
+TraEK: Entropy density K on transcript
+TraEL: Entropy density L on transcript
+TraEM: Entropy density M on transcript
+TraEN: Entropy density N on transcript
+TraEP: Entropy density P on transcript
+TraEQ: Entropy density Q on transcript
+TraER: Entropy density R on transcript
+TraES: Entropy density S on transcript
+TraET: Entropy density T on transcript
+TraEV: Entropy density V on transcript
+TraEW: Entropy density W on transcript
+TraEY: Entropy density Y on transcript
+ComRA: Composition of A
+ComRT: Composition of T
+ComRG: Composition of G
+ComRC: Composition of C
+TraAT: Transition between A and T
+TraAG: Transition between A and G
+TraAC: Transition between A and C
+TraTG: Transition between T and G
+TraTC: Transition between T and C
+TraGC: Transition between G and C
+DPRA0: Distribution of 0.00A
+DPRA1: Distribution of 0.25A
+DPRA2: Distribution of 0.50A
+DPRA3: Distribution of 0.75A
+DPRA4: Distribution of 1.00A
+DPRT0: Distribution of 0.00T
+DPRT1: Distribution of 0.25T
+DPRT2: Distribution of 0.50T
+DPRT3: Distribution of 0.75T
+DPRT4: Distribution of 1.00T
+DPRG0: Distribution of 0.00G
+DPRG1: Distribution of 0.25G
+DPRG2: Distribution of 0.50G
+DPRG3: Distribution of 0.75G
+DPRG4: Distribution of 1.00G
+DPRC0: Distribution of 0.00C
+DPRC1: Distribution of 0.25C
+DPRC2: Distribution of 0.50C
+DPRC3: Distribution of 0.75C
+DPRC4: Distribution of 1.00C
+A
+G
+T
+C
+AA
+AG
+AT
+AC
+GA
+GG
+GT
+GC
+TA
+TG
+TT
+TC
+CA
+CG
+CT
+CC
+KMAAA: Transcript k-mer AAA content
+KMAAG: Transcript k-mer AAG content
+KMAAT: Transcript k-mer AAT content
+KMAAC: Transcript k-mer AAC content
+KMAGA: Transcript k-mer AGA content
+KMAGG: Transcript k-mer AGG content
+KMAGT: Transcript k-mer AGT content
+KMAGC: Transcript k-mer AGC content
+KMATA: Transcript k-mer ATA content
+KMATG: Transcript k-mer ATG content
+KMATT: Transcript k-mer ATT content
+KMATC: Transcript k-mer ATC content
+KMACA: Transcript k-mer ACA content
+KMACG: Transcript k-mer ACG content
+KMACT: Transcript k-mer ACT content
+KMACC: Transcript k-mer ACC content
+KMGAA: Transcript k-mer GAA content
+KMGAG: Transcript k-mer GAG content
+KMGAT: Transcript k-mer GAT content
+KMGAC: Transcript k-mer GAC content
+KMGGA: Transcript k-mer GGA content
+KMGGG: Transcript k-mer GGG content
+KMGGT: Transcript k-mer GGT content
+KMGGC: Transcript k-mer GGC content
+KMGTA: Transcript k-mer GTA content
+KMGTG: Transcript k-mer GTG content
+KMGTT: Transcript k-mer GTT content
+KMGTC: Transcript k-mer GTC content
+KMGCA: Transcript k-mer GCA content
+KMGCG: Transcript k-mer GCG content
+KMGCT: Transcript k-mer GCT content
+KMGCC: Transcript k-mer GCC content
+KMTAA: Transcript k-mer TAA content
+KMTAG: Transcript k-mer TAG content
+KMTAT: Transcript k-mer TAT content
+KMTAC: Transcript k-mer TAC content
+KMTGA: Transcript k-mer TGA content
+KMTGG: Transcript k-mer TGG content
+KMTGT: Transcript k-mer TGT content
+KMTGC: Transcript k-mer TGC content
+KMTTA: Transcript k-mer TTA content
+KMTTG: Transcript k-mer TTG content
+KMTTT: Transcript k-mer TTT content
+KMTTC: Transcript k-mer TTC content
+KMTCA: Transcript k-mer TCA content
+KMTCG: Transcript k-mer TCG content
+KMTCT: Transcript k-mer TCT content
+KMTCC: Transcript k-mer TCC content
+KMCAA: Transcript k-mer CAA content
+KMCAG: Transcript k-mer CAG content
+KMCAT: Transcript k-mer CAT content
+KMCAC: Transcript k-mer CAC content
+KMCGA: Transcript k-mer CGA content
+KMCGG: Transcript k-mer CGG content
+KMCGT: Transcript k-mer CGT content
+KMCGC: Transcript k-mer CGC content
+KMCTA: Transcript k-mer CTA content
+KMCTG: Transcript k-mer CTG content
+KMCTT: Transcript k-mer CTT content
+KMCTC: Transcript k-mer CTC content
+KMCCA: Transcript k-mer CCA content
+KMCCG: Transcript k-mer CCG content
+KMCCT: Transcript k-mer CCT content
+KMCCC: Transcript k-mer CCC content
+FickS: Fickett score
+SCCou: Stop codon count
+SCFre: Stop codon frequency
+SCCFS: Stop codon count frame score
+SCFFS: Stop codon frequency frame score
+ProII: Pseudo protein instability index
+ProPI: Pseudo protein isoelectric point
+ProAH: Pseudo protein average hydropathy
+ProMW: Pseudo protein molecular weight
+PPMFS: Pseudo protein PI-MW frame score
+GCCoW: GC content of whole sequence
+GCCo1: GC content of 1st position of codons
+GCCo2: GC content of 2nd position of codons
+GCCo3: GC content of 3rd position of codons
+GCC1V: GCCo1 variance frame score
+GCC2V: GCCo2 variance frame score
+GCC3V: GCCo3 variance frame score
+ABST1: Dinucleotide auto covariance of lag1 on BST
+APID1: Dinucleotide auto covariance of lag1 on PID
+ABDT1: Dinucleotide auto covariance of lag1 on BDT
+ADGC1: Dinucleotide auto covariance of lag1 on DGC
+AAPH1: Dinucleotide auto covariance of lag1 on APH
+APTW1: Dinucleotide auto covariance of lag1 on PTW
+ADST1: Dinucleotide auto covariance of lag1 on DST
+ADTB1: Dinucleotide auto covariance of lag1 on DTB
+ADDT1: Dinucleotide auto covariance of lag1 on DDT
+ABDS1: Dinucleotide auto covariance of lag1 on BDS
+APDT1: Dinucleotide auto covariance of lag1 on PDT
+ASEZ1: Dinucleotide auto covariance of lag1 on SEZ
+AABA1: Dinucleotide auto covariance of lag1 on ABA
+ABDG1: Dinucleotide auto covariance of lag1 on BDG
+ABDH1: Dinucleotide auto covariance of lag1 on BDH
+ABLS1: Dinucleotide auto covariance of lag1 on BLS
+AETI1: Dinucleotide auto covariance of lag1 on ETI
+AHTF1: Dinucleotide auto covariance of lag1 on HTF
+AHCT1: Dinucleotide auto covariance of lag1 on HCT
+AIBA1: Dinucleotide auto covariance of lag1 on IBA
+ALBZ1: Dinucleotide auto covariance of lag1 on LBZ
+APIA1: Dinucleotide auto covariance of lag1 on PIA
+ASDG1: Dinucleotide auto covariance of lag1 on SDG
+ASDH1: Dinucleotide auto covariance of lag1 on SDH
+ASDS1: Dinucleotide auto covariance of lag1 on SDS
+ASFB1: Dinucleotide auto covariance of lag1 on SFB
+ASTB1: Dinucleotide auto covariance of lag1 on STB
+ASKE1: Dinucleotide auto covariance of lag1 on SKE
+ASMG1: Dinucleotide auto covariance of lag1 on SMG
+ASMH1: Dinucleotide auto covariance of lag1 on SMH
+ASMS1: Dinucleotide auto covariance of lag1 on SMS
+AWCI1: Dinucleotide auto covariance of lag1 on WCI
+ATWI1: Dinucleotide auto covariance of lag1 on TWI
+ATIL1: Dinucleotide auto covariance of lag1 on TIL
+AROL1: Dinucleotide auto covariance of lag1 on ROL
+ASHI1: Dinucleotide auto covariance of lag1 on SHI
+ASLI1: Dinucleotide auto covariance of lag1 on SLI
+ARIS1: Dinucleotide auto covariance of lag1 on RIS
+ABST2: Dinucleotide auto covariance of lag2 on BST
+APID2: Dinucleotide auto covariance of lag2 on PID
+ABDT2: Dinucleotide auto covariance of lag2 on BDT
+ADGC2: Dinucleotide auto covariance of lag2 on DGC
+AAPH2: Dinucleotide auto covariance of lag2 on APH
+APTW2: Dinucleotide auto covariance of lag2 on PTW
+ADST2: Dinucleotide auto covariance of lag2 on DST
+ADTB2: Dinucleotide auto covariance of lag2 on DTB
+ADDT2: Dinucleotide auto covariance of lag2 on DDT
+ABDS2: Dinucleotide auto covariance of lag2 on BDS
+APDT2: Dinucleotide auto covariance of lag2 on PDT
+ASEZ2: Dinucleotide auto covariance of lag2 on SEZ
+AABA2: Dinucleotide auto covariance of lag2 on ABA
+ABDG2: Dinucleotide auto covariance of lag2 on BDG
+ABDH2: Dinucleotide auto covariance of lag2 on BDH
+ABLS2: Dinucleotide auto covariance of lag2 on BLS
+AETI2: Dinucleotide auto covariance of lag2 on ETI
+AHTF2: Dinucleotide auto covariance of lag2 on HTF
+AHCT2: Dinucleotide auto covariance of lag2 on HCT
+AIBA2: Dinucleotide auto covariance of lag2 on IBA
+ALBZ2: Dinucleotide auto covariance of lag2 on LBZ
+APIA2: Dinucleotide auto covariance of lag2 on PIA
+ASDG2: Dinucleotide auto covariance of lag2 on SDG
+ASDH2: Dinucleotide auto covariance of lag2 on SDH
+ASDS2: Dinucleotide auto covariance of lag2 on SDS
+ASFB2: Dinucleotide auto covariance of lag2 on SFB
+ASTB2: Dinucleotide auto covariance of lag2 on STB
+ASKE2: Dinucleotide auto covariance of lag2 on SKE
+ASMG2: Dinucleotide auto covariance of lag2 on SMG
+ASMH2: Dinucleotide auto covariance of lag2 on SMH
+ASMS2: Dinucleotide auto covariance of lag2 on SMS
+AWCI2: Dinucleotide auto covariance of lag2 on WCI
+ATWI2: Dinucleotide auto covariance of lag2 on TWI
+ATIL2: Dinucleotide auto covariance of lag2 on TIL
+AROL2: Dinucleotide auto covariance of lag2 on ROL
+ASHI2: Dinucleotide auto covariance of lag2 on SHI
+ASLI2: Dinucleotide auto covariance of lag2 on SLI
+ARIS2: Dinucleotide auto covariance of lag2 on RIS
+CC101: Cross covariance of lag1 on PID-BDS
+CC102: Cross covariance of lag1 on PID-ETI
+CC103: Cross covariance of lag1 on PID-SKE
+CC104: Cross covariance of lag1 on PID-WCI
+CC105: Cross covariance of lag1 on PID-SLI
+CC106: Cross covariance of lag1 on BDS-PID
+CC107: Cross covariance of lag1 on BDS-ETI
+CC108: Cross covariance of lag1 on BDS-SKE
+CC109: Cross covariance of lag1 on BDS-WCI
+CC110: Cross covariance of lag1 on BDS-SLI
+CC111: Cross covariance of lag1 on ETI-PID
+CC112: Cross covariance of lag1 on ETI-BDS
+CC113: Cross covariance of lag1 on ETI-SKE
+CC114: Cross covariance of lag1 on ETI-WCI
+CC115: Cross covariance of lag1 on ETI-SLI
+CC116: Cross covariance of lag1 on SKE-PID
+CC117: Cross covariance of lag1 on SKE-BDS
+CC118: Cross covariance of lag1 on SKE-ETI
+CC119: Cross covariance of lag1 on SKE-WCI
+CC120: Cross covariance of lag1 on SKE-SLI
+CC121: Cross covariance of lag1 on WCI-PID
+CC122: Cross covariance of lag1 on WCI-BDS
+CC123: Cross covariance of lag1 on WCI-ETI
+CC124: Cross covariance of lag1 on WCI-SKE
+CC125: Cross covariance of lag1 on WCI-SLI
+CC126: Cross covariance of lag1 on SLI-PID
+CC127: Cross covariance of lag1 on SLI-BDS
+CC128: Cross covariance of lag1 on SLI-ETI
+CC129: Cross covariance of lag1 on SLI-SKE
+CC130: Cross covariance of lag1 on SLI-WCI
+CC201: Cross covariance of lag2 on PID-BDS
+CC202: Cross covariance of lag2 on PID-ETI
+CC203: Cross covariance of lag2 on PID-SKE
+CC204: Cross covariance of lag2 on PID-WCI
+CC205: Cross covariance of lag2 on PID-SLI
+CC206: Cross covariance of lag2 on BDS-PID
+CC207: Cross covariance of lag2 on BDS-ETI
+CC208: Cross covariance of lag2 on BDS-SKE
+CC209: Cross covariance of lag2 on BDS-WCI
+CC210: Cross covariance of lag2 on BDS-SLI
+CC211: Cross covariance of lag2 on ETI-PID
+CC212: Cross covariance of lag2 on ETI-BDS
+CC213: Cross covariance of lag2 on ETI-SKE
+CC214: Cross covariance of lag2 on ETI-WCI
+CC215: Cross covariance of lag2 on ETI-SLI
+CC216: Cross covariance of lag2 on SKE-PID
+CC217: Cross covariance of lag2 on SKE-BDS
+CC218: Cross covariance of lag2 on SKE-ETI
+CC219: Cross covariance of lag2 on SKE-WCI
+CC220: Cross covariance of lag2 on SKE-SLI
+CC221: Cross covariance of lag2 on WCI-PID
+CC222: Cross covariance of lag2 on WCI-BDS
+CC223: Cross covariance of lag2 on WCI-ETI
+CC224: Cross covariance of lag2 on WCI-SKE
+CC225: Cross covariance of lag2 on WCI-SLI
+CC226: Cross covariance of lag2 on SLI-PID
+CC227: Cross covariance of lag2 on SLI-BDS
+CC228: Cross covariance of lag2 on SLI-ETI
+CC229: Cross covariance of lag2 on SLI-SKE
+CC230: Cross covariance of lag2 on SLI-WCI
+PCDAA: Parallel correlation PseDN composition of AA
+PCDAT: Parallel correlation PseDN composition of AT
+PCDAC: Parallel correlation PseDN composition of AC
+PCDAG: Parallel correlation PseDN composition of AG
+PCDTA: Parallel correlation PseDN composition of TA
+PCDTT: Parallel correlation PseDN composition of TT
+PCDTC: Parallel correlation PseDN composition of TC
+PCDTG: Parallel correlation PseDN composition of TG
+PCDCA: Parallel correlation PseDN composition of CA
+PCDCT: Parallel correlation PseDN composition of CT
+PCDCC: Parallel correlation PseDN composition of CC
+PCDCG: Parallel correlation PseDN composition of CG
+PCDGA: Parallel correlation PseDN composition of GA
+PCDGT: Parallel correlation PseDN composition of GT
+PCDGC: Parallel correlation PseDN composition of GC
+PCDGG: Parallel correlation PseDN composition of GG
+PCDl1: Parallel correlation PseDN composition of lamda1
+PCDl2: Parallel correlation PseDN composition of lamda2
+SCDAA: Series correlation PseDN composition of AA
+SCDAT: Series correlation PseDN composition of AT
+SCDAC: Series correlation PseDN composition of AC
+SCDAG: Series correlation PseDN composition of AG
+SCDTA: Series correlation PseDN composition of TA
+SCDTT: Series correlation PseDN composition of TT
+SCDTC: Series correlation PseDN composition of TC
+SCDTG: Series correlation PseDN composition of TG
+SCDCA: Series correlation PseDN composition of CA
+SCDCT: Series correlation PseDN composition of CT
+SCDCC: Series correlation PseDN composition of CC
+SCDCG: Series correlation PseDN composition of CG
+SCDGA: Series correlation PseDN composition of GA
+SCDGT: Series correlation PseDN composition of GT
+SCDGC: Series correlation PseDN composition of GC
+SCDGG: Series correlation PseDN composition of GG
+L1PID: Series correlation PseDN composition of lamda1-PID
+L1BDS: Series correlation PseDN composition of lamda1-BDS
+L1ETI: Series correlation PseDN composition of lamda1-ETI
+L1SKE: Series correlation PseDN composition of lamda1-SKE
+L1WCI: Series correlation PseDN composition of lamda1-WCI
+L1SLI: Series correlation PseDN composition of lamda1-SLI
+L2PID: Series correlation PseDN composition of lamda2-PID
+L2BDS: Series correlation PseDN composition of lamda2-BDS
+L2ETI: Series correlation PseDN composition of lamda2-ETI
+L2SKE: Series correlation PseDN composition of lamda2-SKE
+L2WCI: Series correlation PseDN composition of lamda2-WCI
+L2SLI: Series correlation PseDN composition of lamda2-SLI
+EipSP: Electron-ion interaction pseudopotential signal peak
+EipAP: Electron-ion interaction pseudopotential average power
+EiSNR: Electron-ion interaction pseudopotential signal/noise ratio
+EiPS0: Electron-ion interaction pseudopotential spectrum 0
+EiPS1: Electron-ion interaction pseudopotential spectrum 0.25
+EiPS2: Electron-ion interaction pseudopotential spectrum 0.5
+EiPS3: Electron-ion interaction pseudopotential spectrum 0.75
+EiPS4: Electron-ion interaction pseudopotential spectrum 1
+LFICA: Lipoaffinity index composition of A
+LFIAB: Lipoaffinity index transition between A and B
+LFIA0: Lipoaffinity index distribution of 0.00A
+LFIA1: Lipoaffinity index distribution of 0.25A
+LFIA2: Lipoaffinity index distribution of 0.50A
+LFIA3: Lipoaffinity index distribution of 0.75A
+LFIA4: Lipoaffinity index distribution of 1.00A
+LFIAB: Lipoaffinity index_3 transition between A and B
+LFIAC: Lipoaffinity index_3 transition between A and C
+LFI: Lipoaffinity index0
+LFI: Lipoaffinity index00
+LFI: Lipoaffinity index01
+LFI: Lipoaffinity index10
+LFI: Lipoaffinity index_301
+LFI: Lipoaffinity index_302
+LFI: Lipoaffinity index_310
+LFI: Lipoaffinity index_320
+LFI: Lipoaffinity index000
+LFI: Lipoaffinity index001
+LFI: Lipoaffinity index010
+LFI: Lipoaffinity index011
+LFI: Lipoaffinity index100
+LFI: Lipoaffinity index101
+LFI: Lipoaffinity index110
+LFI: Lipoaffinity index_3001
+LFI: Lipoaffinity index_3002
+LFI: Lipoaffinity index_3010
+LFI: Lipoaffinity index_3011
+LFI: Lipoaffinity index_3012
+LFI: Lipoaffinity index_3020
+LFI: Lipoaffinity index_3021
+LFI: Lipoaffinity index_3022
+LFI: Lipoaffinity index_3100
+LFI: Lipoaffinity index_3101
+LFI: Lipoaffinity index_3102
+LFI: Lipoaffinity index_3110
+LFI: Lipoaffinity index_3120
+LFI: Lipoaffinity index_3200
+LFI: Lipoaffinity index_3201
+LFI: Lipoaffinity index_3202
+LFI: Lipoaffinity index_3210
+LFI: Lipoaffinity index_3220
+HPCCA: Gas-hexadecane PC composition of A
+HPCAB: Gas-hexadecane PC transition between A and B
+HPCA0: Gas-hexadecane PC distribution of 0.00A
+HPCA1: Gas-hexadecane PC distribution of 0.25A
+HPCA2: Gas-hexadecane PC distribution of 0.50A
+HPCA3: Gas-hexadecane PC distribution of 0.75A
+HPCA4: Gas-hexadecane PC distribution of 1.00A
+HPCAB: Gas-hexadecane PC_3 transition between A and B
+HPCAC: Gas-hexadecane PC_3 transition between A and C
+HPC: Gas-hexadecane PC0
+HPC: Gas-hexadecane PC00
+HPC: Gas-hexadecane PC01
+HPC: Gas-hexadecane PC10
+HPC: Gas-hexadecane PC_301
+HPC: Gas-hexadecane PC_302
+HPC: Gas-hexadecane PC_310
+HPC: Gas-hexadecane PC_320
+HPC: Gas-hexadecane PC000
+HPC: Gas-hexadecane PC001
+HPC: Gas-hexadecane PC010
+HPC: Gas-hexadecane PC011
+HPC: Gas-hexadecane PC100
+HPC: Gas-hexadecane PC101
+HPC: Gas-hexadecane PC110
+HPC: Gas-hexadecane PC_3001
+HPC: Gas-hexadecane PC_3002
+HPC: Gas-hexadecane PC_3010
+HPC: Gas-hexadecane PC_3011
+HPC: Gas-hexadecane PC_3012
+HPC: Gas-hexadecane PC_3020
+HPC: Gas-hexadecane PC_3021
+HPC: Gas-hexadecane PC_3022
+HPC: Gas-hexadecane PC_3100
+HPC: Gas-hexadecane PC_3101
+HPC: Gas-hexadecane PC_3102
+HPC: Gas-hexadecane PC_3110
+HPC: Gas-hexadecane PC_3120
+HPC: Gas-hexadecane PC_3200
+HPC: Gas-hexadecane PC_3201
+HPC: Gas-hexadecane PC_3202
+HPC: Gas-hexadecane PC_3210
+HPC: Gas-hexadecane PC_3220
+MReCA: Molar refractivity composition of A
+MReCB: Molar refractivity composition of B
+MReAB: Molar refractivity transition between A and B
+MReA0: Molar refractivity distribution of 0.00A
+MReA1: Molar refractivity distribution of 0.25A
+MReA2: Molar refractivity distribution of 0.50A
+MReA3: Molar refractivity distribution of 0.75A
+MReA4: Molar refractivity distribution of 1.00A
+MReB0: Molar refractivity distribution of 0.00B
+MReB1: Molar refractivity distribution of 0.25B
+MReB2: Molar refractivity distribution of 0.50B
+MReB3: Molar refractivity distribution of 0.75B
+MReB4: Molar refractivity distribution of 1.00B
+MRe: Molar refractivity0
+MRe: Molar refractivity1
+MRe: Molar refractivity00
+MRe: Molar refractivity01
+MRe: Molar refractivity10
+MRe: Molar refractivity11
+MRe: Molar refractivity000
+MRe: Molar refractivity001
+MRe: Molar refractivity010
+MRe: Molar refractivity011
+MRe: Molar refractivity100
+MRe: Molar refractivity101
+MRe: Molar refractivity110
+MRe: Molar refractivity111
+SHDCA: Strong H-Bond donors composition of A
+SHDAB: Strong H-Bond donors transition between A and B
+SHDA0: Strong H-Bond donors distribution of 0.00A
+SHDA1: Strong H-Bond donors distribution of 0.25A
+SHDA2: Strong H-Bond donors distribution of 0.50A
+SHDA3: Strong H-Bond donors distribution of 0.75A
+SHDA4: Strong H-Bond donors distribution of 1.00A
+MLFCA: Linear free energy composition of A
+MLFCB: Linear free energy composition of B
+MLFAB: Linear free energy transition between A and B
+MLFA0: Linear free energy distribution of 0.00A
+MLFA1: Linear free energy distribution of 0.25A
+MLFA2: Linear free energy distribution of 0.50A
+MLFA3: Linear free energy distribution of 0.75A
+MLFA4: Linear free energy distribution of 1.00A
+MLFB0: Linear free energy distribution of 0.00B
+MLFB1: Linear free energy distribution of 0.25B
+MLFB2: Linear free energy distribution of 0.50B
+MLFB3: Linear free energy distribution of 0.75B
+MLFB4: Linear free energy distribution of 1.00B
+SHAAB: Strong H-Bond acceptors_3 transition between A and B
+SHAAC: Strong H-Bond acceptors_3 transition between A and C
+PHBAB: Potential Hydrogen Bonds_3 transition between A and B
+PHBAC: Potential Hydrogen Bonds_3 transition between A and C
+SHD: Strong H-Bond donors0
+MLF: Linear free energy0
+MLF: Linear free energy1
+SHD: Strong H-Bond donors00
+SHD: Strong H-Bond donors01
+SHD: Strong H-Bond donors10
+MLF: Linear free energy00
+MLF: Linear free energy01
+MLF: Linear free energy10
+MLF: Linear free energy11
+SHA: Strong H-Bond acceptors_301
+SHA: Strong H-Bond acceptors_302
+SHA: Strong H-Bond acceptors_310
+SHA: Strong H-Bond acceptors_320
+PHB: Potential Hydrogen Bonds_301
+PHB: Potential Hydrogen Bonds_302
+PHB: Potential Hydrogen Bonds_310
+PHB: Potential Hydrogen Bonds_320
+SHD: Strong H-Bond donors000
+SHD: Strong H-Bond donors001
+SHD: Strong H-Bond donors010
+SHD: Strong H-Bond donors011
+SHD: Strong H-Bond donors100
+SHD: Strong H-Bond donors101
+SHD: Strong H-Bond donors110
+MLF: Linear free energy000
+MLF: Linear free energy001
+MLF: Linear free energy010
+MLF: Linear free energy011
+MLF: Linear free energy100
+MLF: Linear free energy101
+MLF: Linear free energy110
+MLF: Linear free energy111
+SHA: Strong H-Bond acceptors_3001
+SHA: Strong H-Bond acceptors_3002
+SHA: Strong H-Bond acceptors_3010
+SHA: Strong H-Bond acceptors_3011
+SHA: Strong H-Bond acceptors_3012
+SHA: Strong H-Bond acceptors_3020
+SHA: Strong H-Bond acceptors_3021
+SHA: Strong H-Bond acceptors_3022
+SHA: Strong H-Bond acceptors_3100
+SHA: Strong H-Bond acceptors_3101
+SHA: Strong H-Bond acceptors_3102
+SHA: Strong H-Bond acceptors_3110
+SHA: Strong H-Bond acceptors_3120
+SHA: Strong H-Bond acceptors_3200
+SHA: Strong H-Bond acceptors_3201
+SHA: Strong H-Bond acceptors_3202
+SHA: Strong H-Bond acceptors_3210
+SHA: Strong H-Bond acceptors_3220
+PHB: Potential Hydrogen Bonds_3001
+PHB: Potential Hydrogen Bonds_3002
+PHB: Potential Hydrogen Bonds_3010
+PHB: Potential Hydrogen Bonds_3011
+PHB: Potential Hydrogen Bonds_3012
+PHB: Potential Hydrogen Bonds_3020
+PHB: Potential Hydrogen Bonds_3021
+PHB: Potential Hydrogen Bonds_3022
+PHB: Potential Hydrogen Bonds_3100
+PHB: Potential Hydrogen Bonds_3101
+PHB: Potential Hydrogen Bonds_3102
+PHB: Potential Hydrogen Bonds_3110
+PHB: Potential Hydrogen Bonds_3120
+PHB: Potential Hydrogen Bonds_3200
+PHB: Potential Hydrogen Bonds_3201
+PHB: Potential Hydrogen Bonds_3202
+PHB: Potential Hydrogen Bonds_3210
+PHB: Potential Hydrogen Bonds_3220
+PSNCA: Primary or secondary nitrogens composition of A
+PSNAB: Primary or secondary nitrogens transition between A and B
+PSNA0: Primary or secondary nitrogens distribution of 0.00A
+PSNA1: Primary or secondary nitrogens distribution of 0.25A
+PSNA2: Primary or secondary nitrogens distribution of 0.50A
+PSNA3: Primary or secondary nitrogens distribution of 0.75A
+PSNA4: Primary or secondary nitrogens distribution of 1.00A
+SLFAB: Sum of path lengths starting from oxygens_3 transition between A and B
+SLFAC: Sum of path lengths starting from oxygens_3 transition between A and C
+TPSAB: Topological polar surface area_3 transition between A and B
+TPSAC: Topological polar surface area_3 transition between A and C
+PSN: Primary or secondary nitrogens0
+PSN: Primary or secondary nitrogens00
+PSN: Primary or secondary nitrogens01
+PSN: Primary or secondary nitrogens10
+SLF: Sum of path lengths starting from oxygens_301
+SLF: Sum of path lengths starting from oxygens_302
+SLF: Sum of path lengths starting from oxygens_310
+SLF: Sum of path lengths starting from oxygens_320
+TPS: Topological polar surface area_301
+TPS: Topological polar surface area_302
+TPS: Topological polar surface area_310
+TPS: Topological polar surface area_320
+PSN: Primary or secondary nitrogens000
+PSN: Primary or secondary nitrogens001
+PSN: Primary or secondary nitrogens010
+PSN: Primary or secondary nitrogens011
+PSN: Primary or secondary nitrogens100
+PSN: Primary or secondary nitrogens101
+PSN: Primary or secondary nitrogens110
+SLF: Sum of path lengths starting from oxygens_3001
+SLF: Sum of path lengths starting from oxygens_3002
+SLF: Sum of path lengths starting from oxygens_3010
+SLF: Sum of path lengths starting from oxygens_3011
+SLF: Sum of path lengths starting from oxygens_3012
+SLF: Sum of path lengths starting from oxygens_3020
+SLF: Sum of path lengths starting from oxygens_3021
+SLF: Sum of path lengths starting from oxygens_3022
+SLF: Sum of path lengths starting from oxygens_3100
+SLF: Sum of path lengths starting from oxygens_3101
+SLF: Sum of path lengths starting from oxygens_3102
+SLF: Sum of path lengths starting from oxygens_3110
+SLF: Sum of path lengths starting from oxygens_3120
+SLF: Sum of path lengths starting from oxygens_3200
+SLF: Sum of path lengths starting from oxygens_3201
+SLF: Sum of path lengths starting from oxygens_3202
+SLF: Sum of path lengths starting from oxygens_3210
+SLF: Sum of path lengths starting from oxygens_3220
+TPS: Topological polar surface area_3001
+TPS: Topological polar surface area_3002
+TPS: Topological polar surface area_3010
+TPS: Topological polar surface area_3011
+TPS: Topological polar surface area_3012
+TPS: Topological polar surface area_3020
+TPS: Topological polar surface area_3021
+TPS: Topological polar surface area_3022
+TPS: Topological polar surface area_3100
+TPS: Topological polar surface area_3101
+TPS: Topological polar surface area_3102
+TPS: Topological polar surface area_3110
+TPS: Topological polar surface area_3120
+TPS: Topological polar surface area_3200
+TPS: Topological polar surface area_3201
+TPS: Topological polar surface area_3202
+TPS: Topological polar surface area_3210
+TPS: Topological polar surface area_3220
+CNHCA: NH- count composition of A
+CNHCB: NH- count composition of B
+CNHAB: NH- count transition between A and B
+CNHA0: NH- count distribution of 0.00A
+CNHA1: NH- count distribution of 0.25A
+CNHA2: NH- count distribution of 0.50A
+CNHA3: NH- count distribution of 0.75A
+CNHA4: NH- count distribution of 1.00A
+CNHB0: NH- count distribution of 0.00B
+CNHB1: NH- count distribution of 0.25B
+CNHB2: NH- count distribution of 0.50B
+CNHB3: NH- count distribution of 0.75B
+CNHB4: NH- count distribution of 1.00B
+CNH: NH- count0
+CNH: NH- count1
+CNH: NH- count00
+CNH: NH- count01
+CNH: NH- count10
+CNH: NH- count11
+CNH: NH- count000
+CNH: NH- count001
+CNH: NH- count010
+CNH: NH- count011
+CNH: NH- count100
+CNH: NH- count101
+CNH: NH- count110
+CNH: NH- count111

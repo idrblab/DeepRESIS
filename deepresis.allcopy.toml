@@ -1,0 +1,8 @@
+[paths]
+model_dir = "/mnt/e/ncdresis/DeepRESIS/artifacts_allcopy/models"
+gene_matrix_dir = "/mnt/e/ncdresis/DeepRESIS/artifacts_allcopy/gene_matrix"
+
+[run]
+device = "auto"
+seed = 123
+topk = 300

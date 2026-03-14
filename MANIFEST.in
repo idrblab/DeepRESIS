@@ -1,0 +1,3 @@
+include README.md
+recursive-include deepresis/resources *.toml
+recursive-include deepresis/legacy/ncresis_backend *.txt *.xlsx *.fdef *.fa *.npy .empty

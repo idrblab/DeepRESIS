@@ -1,0 +1,4 @@
+ncrna_id	drug_id	score	label	label_id
+hsa_circ_0000073	126941	0.2949991226196289	non-resistant	0
+hsa_circ_0000073	5702198	0.9216681718826294	resistant	1
+hsa_circ_0000079	31703	0.8948360681533813	resistant	1

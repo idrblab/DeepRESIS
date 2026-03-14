@@ -1,0 +1,8 @@
+[paths]
+model_dir = "/abs/path/to/models"
+gene_matrix_dir = "/abs/path/to/gene_matrix"
+
+[run]
+device = "auto"
+seed = 123
+topk = 300

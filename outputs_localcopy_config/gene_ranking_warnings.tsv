@@ -1,0 +1,4 @@
+ncrna_id	drug_id	message
+hsa_circ_0000073	126941	Skipped pair (hsa_circ_0000073, 126941): ncRNA hsa_circ_0000073 not in network.
+hsa_circ_0000073	5702198	Skipped pair (hsa_circ_0000073, 5702198): ncRNA hsa_circ_0000073 not in network.
+hsa_circ_0000079	31703	Skipped pair (hsa_circ_0000079, 31703): ncRNA hsa_circ_0000079 not in network.

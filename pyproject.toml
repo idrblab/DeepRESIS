@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "DeepRESIS"
+version = "0.1.0"
+description = "A lightweight, installable DeepRESIS package for ncRNA-drug resistance prediction."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+  { name = "OpenAI Codex Refactor" }
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "biopython",
+  "tomli; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+]
+
+[project.scripts]
+deepresis = "deepresis.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["deepresis*"]
+
+[tool.setuptools.package-data]
+"deepresis.resources" = ["*.toml"]
+"deepresis.legacy.ncresis_backend" = ["**/*.txt", "**/*.xlsx", "**/*.fdef", "**/*.fa", "**/*.npy", "**/.empty"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
