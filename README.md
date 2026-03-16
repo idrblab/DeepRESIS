@@ -142,9 +142,9 @@ Or run the same example explicitly:
 ```bash
 deepresis predict \
   --config ./deepresis.toml \
-  --fasta /mnt/e/ncdresis/ncRESIS_Files/test/test.fasta \
-  --smiles /mnt/e/ncdresis/ncRESIS_Files/test/test_cid.txt \
-  --pairs /mnt/e/ncdresis/ncRESIS_Files/test/test_pairs.txt \
+  --fasta ./examples/test.fasta \
+  --smiles ./examples/test_cid.txt \
+  --pairs ./examples/test_pairs.txt \
   --output-dir ./demo_outputs
 ```
 
