@@ -1,151 +1,44 @@
 # DeepRESIS
 
-DeepRESIS is a lightweight Python package that wraps the existing `ncRESIS_Files` inference logic into an installable package and CLI.
+DeepRESIS is a command-line tool for predicting ncRNA-drug resistance relationships. You provide an ncRNA FASTA file, a drug SMILES file, and an ncRNA-drug pair file. The tool produces resistance prediction results and top-k gene ranking outputs.
 
-## Repository Design
+## Quick Start
 
-This GitHub-targeted repository is intentionally lightweight.
-
-- Included: Python package code, vendored feature backend, tests, docs, examples
-- Not included: model checkpoints and large gene-matrix CSV files
-
-Those large assets should be downloaded separately and configured with a TOML config file or CLI flags.
-
-## Large Files
-
-- `TODO: Hugging Face model link`
-- `TODO: Hugging Face gene matrix link`
-
-Expected local layout after download:
-
-```text
-/data/deepresis/
-├── models/
-│   ├── fold0/ne_student.ckpt
-│   ├── fold1/ne_student.ckpt
-│   ├── fold2/ne_student.ckpt
-│   ├── fold3/ne_student.ckpt
-│   └── fold4/ne_student.ckpt
-└── gene_matrix/
-    ├── drug_gene.csv
-    └── ncrna_gene.csv
-```
-
-### Asset Bootstrap
-
-There are now two asset bootstrap modes:
-
-1. local copy mode for development and validation
-2. URL download mode for future Hugging Face archives
-
-Local copy mode:
+On a fresh machine:
 
 ```bash
-export DEEPRESIS_LOCAL_MODEL_DIR=/path/to/model_pharameter
-export DEEPRESIS_LOCAL_GENE_MATRIX_DIR=/path/to/gene_matrix
-bash scripts/bootstrap_assets.sh
-```
-
-URL download mode:
-
-```bash
-export DEEPRESIS_MODELS_URL="https://..."
-export DEEPRESIS_GENE_MATRIX_URL="https://..."
-bash scripts/bootstrap_assets.sh
-```
-
-By default this creates:
-
-- `./artifacts/models`
-- `./artifacts/gene_matrix`
-- `./deepresis.toml`
-
-### Full Bootstrap
-
-If you want environment setup and asset setup in one chain:
-
-```bash
-bash scripts/bootstrap_all.sh
-```
-
-## Installation
-
-### One-command Bootstrap
-
-On a fresh server, the intended setup path is:
-
-```bash
-git clone <your-github-repo> DeepRESIS
+git clone https://github.com/idrblab/DeepRESIS.git
 cd DeepRESIS
-bash scripts/bootstrap_env.sh
+bash scripts/bootstrap_all.sh
+conda activate deepresis
+deepresis --help
 ```
 
-This script will:
+This is the main installation path. It installs the environment, downloads the required large files from Hugging Face, generates `deepresis.toml`, and validates that the runtime is ready.
 
-1. create or update a conda environment from `environment.yml`
-2. install the R runtime and conda dependencies
-3. install the R package `LncFinder`
-4. run `pip install -e .`
-5. verify that Python modules, `RNAfold`, and `LncFinder` are available
+## What the Bootstrap Script Does
 
-This bootstrap path has been validated in a fresh conda environment on the current machine.
+`bash scripts/bootstrap_all.sh` will automatically:
 
-Default environment name: `deepresis`
+1. create a conda environment
+2. install Python dependencies
+3. install the R runtime and required R packages
+4. install the R package `LncFinder`
+5. install DeepRESIS in editable mode
+6. download 5 model checkpoint files from Hugging Face
+7. download `drug_gene.csv` and `ncrna_gene.csv` from Hugging Face
+8. generate `deepresis.toml`
+9. validate the runtime and downloaded assets
 
-You can override it:
+Large model and gene matrix files are not stored in the GitHub repository. They are fetched automatically during bootstrap.
 
-```bash
-bash scripts/bootstrap_env.sh deepresis_prod
-```
+## Files You Need
 
-### Manual Equivalent
+DeepRESIS needs three input files.
 
-```bash
-conda env create -n deepresis -f environment.yml
-conda run -n deepresis pip install --upgrade pip
-conda run -n deepresis R -q -e 'options(repos = c(CRAN = "https://mirrors.tuna.tsinghua.edu.cn/CRAN/")); if (!requireNamespace("LncFinder", quietly = TRUE)) install.packages("LncFinder", dependencies = TRUE)'
-conda run -n deepresis bash -lc 'cd /path/to/DeepRESIS && pip install -e .'
-conda run -n deepresis bash -lc 'cd /path/to/DeepRESIS && python scripts/check_runtime.py'
-```
+### 1. ncRNA FASTA file
 
-If you also want assets and a config file prepared automatically, run:
-
-```bash
-bash scripts/bootstrap_assets.sh
-```
-
-## Configuration
-
-Example `deepresis.toml`:
-
-```toml
-[paths]
-model_dir = "/data/deepresis/models"
-gene_matrix_dir = "/data/deepresis/gene_matrix"
-
-[run]
-device = "auto"
-seed = 123
-topk = 300
-```
-
-Resolution priority:
-
-1. CLI flags
-2. Environment variables
-3. `--config`
-4. `./deepresis.toml`
-5. `~/.config/deepresis/config.toml`
-
-Supported environment variables:
-
-- `DEEPRESIS_CONFIG`
-- `DEEPRESIS_MODEL_DIR`
-- `DEEPRESIS_GENE_MATRIX_DIR`
-
-## Input Formats
-
-### FASTA
+Example:
 
 ```text
 >ncRNA_1
@@ -154,64 +47,57 @@ AUGCUAGCUAGCUA
 GGCUAAGCUU
 ```
 
-- record ID becomes `ncrna_id`
-- sequence must be non-empty
-- allowed characters: `A/C/G/U/T/N`
+The FASTA record ID becomes the `ncrna_id`.
 
-### SMILES
+### 2. Drug SMILES file
+
+Example:
 
 ```text
 drug1    CCO
 drug2    CCN(CC)CC
 ```
 
-- first column: `drug_id`
-- second column: `smiles`
-- whitespace-separated input is accepted
+The first column is `drug_id`, and the second column is the SMILES string.
 
-### Pairs
+### 3. ncRNA-drug pair file
+
+Example:
 
 ```text
 ncRNA_1    drug1
 ncRNA_2    drug2
 ```
 
-- first column: `ncrna_id`
-- second column: `drug_id`
-- pairs missing from FASTA or SMILES are skipped with warnings
+The first column is `ncrna_id`, and the second column is `drug_id`.
 
-## CLI Usage
+Important: every `ncrna_id` in the pair file must exist in the FASTA file, and every `drug_id` in the pair file must exist in the SMILES file.
+
+## Run Your First Prediction
+
+After bootstrap finishes, run prediction with the generated config file:
 
 ```bash
 deepresis predict \
-  --fasta /mnt/e/ncdresis/ncRESIS_Files/test/test.fasta \
-  --smiles /mnt/e/ncdresis/ncRESIS_Files/test/test_cid.txt \
-  --pairs /mnt/e/ncdresis/ncRESIS_Files/test/test_pairs.txt \
+  --config ./deepresis.toml \
+  --fasta /path/to/test.fasta \
+  --smiles /path/to/test_cid.txt \
+  --pairs /path/to/test_pairs.txt \
   --output-dir ./outputs \
-  --model-dir /mnt/e/ncdresis/ncRESIS_Files/model_pharameter \
-  --gene-matrix-dir /mnt/e/ncdresis/ncRESIS_Files/gene_matrix \
   --topk 300
 ```
 
-## Python Usage
+You do not need to pass `--model-dir` or `--gene-matrix-dir` in the normal workflow.
 
-```python
-from deepresis.pipeline import run_prediction
+## Output Files
 
-run_prediction(
-    fasta_path="test.fasta",
-    smiles_path="test_cid.txt",
-    pairs_path="test_pairs.txt",
-    output_dir="outputs",
-    model_dir="/data/deepresis/models",
-    gene_matrix_dir="/data/deepresis/gene_matrix",
-    topk=300,
-)
-```
+DeepRESIS writes three output files in the output directory.
 
-## Outputs
+### 1. `resistance_predictions.tsv`
 
-### `resistance_predictions.tsv`
+This file contains resistance prediction results for each requested ncRNA-drug pair.
+
+Columns:
 
 - `ncrna_id`
 - `drug_id`
@@ -219,7 +105,11 @@ run_prediction(
 - `label`
 - `label_id`
 
-### `topk_genes.tsv`
+### 2. `topk_genes.tsv`
+
+This file contains the top-k ranked genes for each pair when gene ranking is available.
+
+Columns:
 
 - `ncrna_id`
 - `drug_id`
@@ -229,59 +119,116 @@ run_prediction(
 - `drug_gene_score`
 - `ncrna_gene_score`
 
-### `gene_ranking_warnings.tsv`
+### 3. `gene_ranking_warnings.tsv`
+
+This file records why gene ranking could not be generated for specific pairs.
+
+Columns:
 
 - `ncrna_id`
 - `drug_id`
 - `message`
 
-## Minimal Example
+## Demo Example
 
-The repo includes lightweight tests that stub out heavy feature/model work. Use them to confirm the editable install and package wiring:
+You can run the repository demo after installation:
 
 ```bash
-cd /mnt/e/ncdresis/DeepRESIS
-conda run -n deepresis pytest tests/test_minimal_example.py
+bash examples/run_demo.sh
 ```
 
-## Real Example
-
-Use your local large assets:
+Or run the same example explicitly:
 
 ```bash
-cd /mnt/e/ncdresis/DeepRESIS
-conda run -n deepresis deepresis predict \
-  --fasta /mnt/e/ncdresis/ncRESIS_Files/test/test.fasta \
-  --smiles /mnt/e/ncdresis/ncRESIS_Files/test/test_cid.txt \
-  --pairs /mnt/e/ncdresis/ncRESIS_Files/test/test_pairs.txt \
-  --output-dir ./outputs_real \
-  --model-dir /mnt/e/ncdresis/ncRESIS_Files/model_pharameter \
-  --gene-matrix-dir /mnt/e/ncdresis/ncRESIS_Files/gene_matrix \
-  --topk 300
-```
-
-Or, if you already ran `bootstrap_assets.sh`, you can use the generated config file:
-
-```bash
-cd /mnt/e/ncdresis/DeepRESIS
-conda run -n deepresis deepresis predict \
+deepresis predict \
   --config ./deepresis.toml \
   --fasta /mnt/e/ncdresis/ncRESIS_Files/test/test.fasta \
   --smiles /mnt/e/ncdresis/ncRESIS_Files/test/test_cid.txt \
   --pairs /mnt/e/ncdresis/ncRESIS_Files/test/test_pairs.txt \
-  --output-dir ./outputs_real
+  --output-dir ./demo_outputs
 ```
 
 Expected behavior for the current sample:
 
-- `resistance_predictions.tsv` should contain exactly the 3 requested pairs
-- `topk_genes.tsv` may be empty except for the header
+- `resistance_predictions.tsv` contains exactly 3 requested pairs
+- `topk_genes.tsv` may contain only the header
 - `gene_ranking_warnings.tsv` may contain 3 warnings because the sample circRNA IDs are not present in `ncrna_gene.csv`
 
-## Common Errors
+## Troubleshooting
 
-- `Model directory is not configured`
-- `Gene matrix directory is not configured`
-- `Missing model checkpoint files`
-- `Missing gene matrix files`
-- `CUDA was requested but is not available`
+### `conda: command not found`
+
+Conda is not installed or not on your `PATH`.
+
+Next step: install Miniconda or Anaconda first, then rerun `bash scripts/bootstrap_all.sh`.
+
+### Hugging Face download failed
+
+The machine cannot access Hugging Face, or the connection was interrupted.
+
+Next step: check internet access and rerun the bootstrap command.
+
+### Missing model checkpoint files
+
+One or more downloaded checkpoint files are missing under `artifacts/models`.
+
+Next step: delete the incomplete `artifacts` directory and rerun `bash scripts/bootstrap_all.sh`.
+
+### Missing gene matrix files
+
+`drug_gene.csv` or `ncrna_gene.csv` is missing under `artifacts/gene_matrix`.
+
+Next step: delete the incomplete `artifacts` directory and rerun `bash scripts/bootstrap_all.sh`.
+
+### `RNAfold` not found
+
+The ViennaRNA binary is not available in the installed environment.
+
+Next step: rerun the bootstrap command and confirm that environment creation completed successfully.
+
+### `LncFinder` check failed
+
+The R package `LncFinder` was not installed correctly.
+
+Next step: rerun the bootstrap command. If it still fails, inspect the R installation step printed by the script.
+
+## Advanced Options
+
+### Custom environment name
+
+```bash
+bash scripts/bootstrap_all.sh deepresis_prod
+```
+
+### Custom environment name, asset directory, and config path
+
+```bash
+bash scripts/bootstrap_all.sh deepresis_prod /data/deepresis_assets /data/deepresis.toml
+```
+
+### Override Hugging Face source URLs
+
+Normally you do not need this. If needed, you can override the Hugging Face directory URLs:
+
+```bash
+export DEEPRESIS_MODELS_URL="https://huggingface.co/swallow-design/DeepRESIS/tree/main/model_pharameter"
+export DEEPRESIS_GENE_MATRIX_URL="https://huggingface.co/swallow-design/DeepRESIS/tree/main/gene_matrix"
+bash scripts/bootstrap_all.sh
+```
+
+The bootstrap script will automatically normalize `tree/main` or `blob/main` URLs to real `resolve/main` download URLs.
+
+### Python API
+
+```python
+from deepresis.pipeline import run_prediction
+
+run_prediction(
+    fasta_path="test.fasta",
+    smiles_path="test_cid.txt",
+    pairs_path="test_pairs.txt",
+    output_dir="outputs",
+    config_path="deepresis.toml",
+    topk=300,
+)
+```

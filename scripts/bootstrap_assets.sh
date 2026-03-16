@@ -7,63 +7,21 @@ CONFIG_PATH="${2:-${ROOT_DIR}/deepresis.toml}"
 
 MODELS_DIR="${TARGET_ROOT}/models"
 GENE_MATRIX_DIR="${TARGET_ROOT}/gene_matrix"
-TMP_DIR="${TARGET_ROOT}/.tmp"
 
-MODELS_URL="${DEEPRESIS_MODELS_URL:-}"
-GENE_MATRIX_URL="${DEEPRESIS_GENE_MATRIX_URL:-}"
-LOCAL_MODEL_DIR="${DEEPRESIS_LOCAL_MODEL_DIR:-}"
-LOCAL_GENE_MATRIX_DIR="${DEEPRESIS_LOCAL_GENE_MATRIX_DIR:-}"
+DEFAULT_MODELS_URL="https://huggingface.co/swallow-design/DeepRESIS/tree/main/model_pharameter"
+DEFAULT_GENE_MATRIX_URL="https://huggingface.co/swallow-design/DeepRESIS/tree/main/gene_matrix"
 
-download_and_extract() {
-  local url="$1"
-  local dest="$2"
+MODELS_URL="${DEEPRESIS_MODELS_URL:-${DEFAULT_MODELS_URL}}"
+GENE_MATRIX_URL="${DEEPRESIS_GENE_MATRIX_URL:-${DEFAULT_GENE_MATRIX_URL}}"
 
-  python3 - "$url" "$dest" <<'PY'
-from __future__ import annotations
-
-import shutil
-import sys
-import tarfile
-import urllib.request
-import zipfile
-from pathlib import Path
-
-
-def main() -> int:
-    url = sys.argv[1]
-    dest = Path(sys.argv[2])
-    dest.mkdir(parents=True, exist_ok=True)
-
-    archive_name = url.rsplit("/", 1)[-1] or "downloaded_asset"
-    archive_path = dest / archive_name
-
-    with urllib.request.urlopen(url) as response, archive_path.open("wb") as handle:
-        shutil.copyfileobj(response, handle)
-
-    suffixes = archive_path.suffixes
-    name = archive_path.name.lower()
-
-    if name.endswith(".tar.gz") or name.endswith(".tgz"):
-        with tarfile.open(archive_path, "r:gz") as tar:
-            tar.extractall(dest)
-    elif name.endswith(".tar"):
-        with tarfile.open(archive_path, "r:") as tar:
-            tar.extractall(dest)
-    elif name.endswith(".zip"):
-        with zipfile.ZipFile(archive_path, "r") as zf:
-            zf.extractall(dest)
-    else:
-        raise SystemExit(
-            "Unsupported asset archive format. Use .tar.gz, .tgz, .tar, or .zip."
-        )
-
-    archive_path.unlink()
-    return 0
-
-
-raise SystemExit(main())
-PY
-}
+if command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="python3"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="python"
+else
+  echo "python3 or python is required to download Hugging Face assets" >&2
+  exit 1
+fi
 
 validate_models() {
   local model_root="$1"
@@ -114,31 +72,77 @@ topk = 300
 EOF
 }
 
-rm -rf "${TMP_DIR}"
-mkdir -p "${MODELS_DIR}" "${GENE_MATRIX_DIR}" "${TMP_DIR}"
+mkdir -p "${MODELS_DIR}" "${GENE_MATRIX_DIR}"
 
 echo "[1/4] Preparing asset directories under ${TARGET_ROOT}"
+echo "[2/4] Downloading required model checkpoints and gene files from Hugging Face"
 
-if [[ -n "${LOCAL_MODEL_DIR}" && -n "${LOCAL_GENE_MATRIX_DIR}" ]]; then
-  echo "[2/4] Copying local model and gene assets"
-  rm -rf "${MODELS_DIR}" "${GENE_MATRIX_DIR}"
-  mkdir -p "${MODELS_DIR}" "${GENE_MATRIX_DIR}"
-  cp -a "${LOCAL_MODEL_DIR}/." "${MODELS_DIR}/"
-  cp -a "${LOCAL_GENE_MATRIX_DIR}/." "${GENE_MATRIX_DIR}/"
-elif [[ -n "${MODELS_URL}" && -n "${GENE_MATRIX_URL}" ]]; then
-  echo "[2/4] Downloading model and gene assets"
-  rm -rf "${MODELS_DIR}" "${GENE_MATRIX_DIR}"
-  mkdir -p "${MODELS_DIR}" "${GENE_MATRIX_DIR}"
-  download_and_extract "${MODELS_URL}" "${MODELS_DIR}"
-  download_and_extract "${GENE_MATRIX_URL}" "${GENE_MATRIX_DIR}"
-else
-  echo "Asset source is not configured." >&2
-  echo "Use either:" >&2
-  echo "  DEEPRESIS_LOCAL_MODEL_DIR + DEEPRESIS_LOCAL_GENE_MATRIX_DIR" >&2
-  echo "or:" >&2
-  echo "  DEEPRESIS_MODELS_URL + DEEPRESIS_GENE_MATRIX_URL" >&2
-  exit 1
-fi
+"${PYTHON_BIN}" - "${MODELS_URL}" "${GENE_MATRIX_URL}" "${MODELS_DIR}" "${GENE_MATRIX_DIR}" <<'PY'
+from __future__ import annotations
+
+import shutil
+import sys
+import urllib.request
+from pathlib import Path
+
+
+MODEL_FILES = [
+    "fold0/ne_student.ckpt",
+    "fold1/ne_student.ckpt",
+    "fold2/ne_student.ckpt",
+    "fold3/ne_student.ckpt",
+    "fold4/ne_student.ckpt",
+]
+
+GENE_FILES = [
+    "drug_gene.csv",
+    "ncrna_gene.csv",
+]
+
+
+def normalize_base(url: str) -> str:
+    normalized = url.rstrip("/")
+    normalized = normalized.replace("/tree/main/", "/resolve/main/")
+    normalized = normalized.replace("/blob/main/", "/resolve/main/")
+    return normalized
+
+
+def download(url: str, destination: Path) -> None:
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if destination.exists() and destination.stat().st_size > 0:
+        print(f"Skip existing file: {destination}")
+        return
+
+    tmp_destination = destination.with_suffix(destination.suffix + ".part")
+    print(f"Downloading {url}")
+    try:
+        with urllib.request.urlopen(url) as response, tmp_destination.open("wb") as handle:
+            shutil.copyfileobj(response, handle)
+    except Exception as exc:
+        if tmp_destination.exists():
+            tmp_destination.unlink()
+        raise SystemExit(f"Failed to download {url} -> {destination}: {exc}") from exc
+
+    tmp_destination.replace(destination)
+
+
+def main() -> int:
+    model_base = normalize_base(sys.argv[1])
+    gene_base = normalize_base(sys.argv[2])
+    model_dir = Path(sys.argv[3])
+    gene_dir = Path(sys.argv[4])
+
+    for relative_path in MODEL_FILES:
+        download(f"{model_base}/{relative_path}", model_dir / relative_path)
+
+    for relative_path in GENE_FILES:
+        download(f"{gene_base}/{relative_path}", gene_dir / relative_path)
+
+    return 0
+
+
+raise SystemExit(main())
+PY
 
 echo "[3/4] Validating asset layout"
 validate_models "${MODELS_DIR}"
@@ -146,8 +150,6 @@ validate_gene_matrix "${GENE_MATRIX_DIR}"
 
 echo "[4/4] Writing config file to ${CONFIG_PATH}"
 write_config "${MODELS_DIR}" "${GENE_MATRIX_DIR}" "${CONFIG_PATH}"
-
-rm -rf "${TMP_DIR}"
 
 cat <<EOF
 

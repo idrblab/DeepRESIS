@@ -19,5 +19,6 @@ All bootstrap steps finished.
 Next:
   conda activate ${ENV_NAME}
   cd ${ROOT_DIR}
+  deepresis --help
   deepresis predict --config ${CONFIG_PATH} --fasta <fasta> --smiles <smiles> --pairs <pairs> --output-dir <output_dir>
 EOF

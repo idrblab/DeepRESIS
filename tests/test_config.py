@@ -7,6 +7,17 @@ import pytest
 from deepresis.config import ConfigError, load_config
 
 
+@pytest.fixture(autouse=True)
+def _isolate_config_resolution(monkeypatch, tmp_path):
+    for key in (
+        "DEEPRESIS_CONFIG",
+        "DEEPRESIS_MODEL_DIR",
+        "DEEPRESIS_GENE_MATRIX_DIR",
+    ):
+        monkeypatch.delenv(key, raising=False)
+    monkeypatch.chdir(tmp_path)
+
+
 def _make_model_dir(root: Path) -> Path:
     for fold in range(5):
         fold_dir = root / f"fold{fold}"
